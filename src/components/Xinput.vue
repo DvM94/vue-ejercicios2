@@ -1,7 +1,7 @@
 <template>
   <div class="dato">
-    <label v-bind:class="{ verde:color }" for="dato">{{ label }}</label>
-    <input name="dato" v-model="dato" v-bind:placeholder="'Introduce tu '+label" @keyup="comprobar"/>
+    <label v-bind:class="{ verde:color }" v-bind:for="label">{{ label }}</label>
+    <input v-bind:name="label" v-bind:id="label"  v-model="dato" v-bind:placeholder="'Introduce tu '+label" @keyup="comprobar"/>
   </div>
 </template>
 
@@ -35,31 +35,26 @@ export default {
 
 <style scoped lang="scss">
 .dato {
-  margin: 10px auto 10px auto;
-  width: 75%;
-  border: 2px dashed #bbb;
-  padding: 25px;
+  margin: 0 auto 0 auto;
+  width: fit-content;
+  padding: 15px;
   label{
-    background-color: rgb(223, 26, 26);
-    color: white;
-    border-radius: 10px;
     margin-right: 10px;
-    padding: 10px;
+    padding: 5px;
     display: inline-block;
     min-width: 75px;
     font-weight: bold;
+    font-size: .8em;
     border: 1px solid black;
-    box-shadow: 2px 2px 4px #888;
   }   
   .verde{
-    background-color: #47b0e0;
+    background-color: #47e06d3b;
   }
   input{
     text-align: center;
     border: none;
     border-bottom: 2px solid black;
-    height: 30px;
-    font-size: 1em;
+    height: 20px;
   }
 }
 </style>

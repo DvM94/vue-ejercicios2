@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Ejercicio1 from '../views/Ejercicio1.vue'
+import Ejercicio2 from '../views/Ejercicio2.vue'
+import Ejercicio3 from '../views/Ejercicio3.vue'
 
 const routes = [
   {
@@ -10,16 +13,17 @@ const routes = [
   {
     path: '/ejercicio1',
     name: 'Ejercicio 1',
-    component: function () {
-      return import('../views/Ejercicio1.vue')
-    }
+    component: Ejercicio1
   },
   {
     path: '/ejercicio2',
     name: 'Ejercicio 2',
-    component: function () {
-      return import('../views/Ejercicio2.vue')
-    }
+    component: Ejercicio2
+  },
+  {
+    path: '/ejercicio3',
+    name: 'Ejercicio 3',
+    component: Ejercicio3
   }
 ]
 
