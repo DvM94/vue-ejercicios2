@@ -32,4 +32,10 @@ button {
   font-weight: bold;
   box-shadow: 2px 2px 4px #888;
 }
+.button-warning{
+  background-color: red;
+}
+.warning{
+  color: red;
+}
 </style>

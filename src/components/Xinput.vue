@@ -1,17 +1,17 @@
 <template>
   <div class="dato">
-    <label v-bind:class="{ verde:color }" v-bind:for="label">{{ label }}</label>
-    <input v-bind:name="label" v-bind:id="label"  v-model="dato" v-bind:placeholder="'Introduce tu '+label" @keyup="comprobar"/>
+    <label v-bind:class="{ verde:color }" v-bind:for="label" v-text="label"></label>
+    <input v-bind:name="label" v-bind:id="label" v-model="dato" v-bind:placeholder="'Introduce tu '+label" @keyup="comprobar"/>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref } from "vue"
 export default {
   name: "Xinput",
   props: {
     label: String,
-    regExp: ""
+    regExp: String
   },
   setup(props) {
     
@@ -45,7 +45,8 @@ export default {
     min-width: 75px;
     font-weight: bold;
     font-size: .8em;
-    border: 1px solid black;
+    border: 1px solid #888;
+    border-radius: 3px;
   }   
   .verde{
     background-color: #47e06d3b;

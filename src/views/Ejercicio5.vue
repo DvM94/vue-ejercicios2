@@ -1,15 +1,15 @@
 <template>
   <div class="ejercicio">
-    <LoginBox userName="Pepe" userPassword="1234"/>
+    <XtableV2 />
   </div>
 </template>
 
 <script>
-import LoginBox from "@/components/LoginBox.vue";
+import XtableV2 from "@/components/XtableV2.vue";
 
 export default {
   components: {
-    LoginBox,
+    XtableV2
   },
 };
 </script>

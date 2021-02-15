@@ -3,6 +3,8 @@ import Home from '../views/Home.vue'
 import Ejercicio1 from '../views/Ejercicio1.vue'
 import Ejercicio2 from '../views/Ejercicio2.vue'
 import Ejercicio3 from '../views/Ejercicio3.vue'
+import Ejercicio4 from '../views/Ejercicio4.vue'
+import Ejercicio5 from '../views/Ejercicio5.vue'
 
 const routes = [
   {
@@ -24,6 +26,16 @@ const routes = [
     path: '/ejercicio3',
     name: 'Ejercicio 3',
     component: Ejercicio3
+  },
+  {
+    path: '/ejercicio4',
+    name: 'Ejercicio 4',
+    component: Ejercicio4
+  },
+  {
+    path: '/ejercicio5',
+    name: 'Ejercicio 5',
+    component: Ejercicio5
   }
 ]
 
