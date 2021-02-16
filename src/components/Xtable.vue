@@ -25,17 +25,17 @@
 </template>
 
 <script>
-import { reactive, computed } from "vue";
+import { computed } from "vue";
 export default {
   name: "Xtable",
   props: {},
   setup() {
-    const datos = reactive([
+    const datos = [
       { concepto: "Pantalones vaqueros chico", cantidad: 2, precio: 30.99 },
       { concepto: "Camiseta básica chico", cantidad: 4, precio: 6.99 },
       { concepto: "Pijama unisex", cantidad: 1, precio: 12.5 },
       { concepto: "Deportivas Nike", cantidad: 1, precio: 80 },
-    ])
+    ]
 
     const total = computed(()=>{
       let total=0
