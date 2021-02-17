@@ -1,19 +1,15 @@
 <template>
   <div class="ejercicio">
-    <Weather />
+    <SelectCard />
   </div>
 </template>
 
 <script>
-import Weather from "@/components/Weather.vue"
+import SelectCard from "@/components/SelectCard.vue";
 
 export default {
-  components:{
-    Weather,
+  components: {
+    SelectCard,
   }
 }
 </script>
-
-<style>
-
-</style>

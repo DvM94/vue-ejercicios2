@@ -54,18 +54,21 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .card{
   width: 300px;
   margin: 1em auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   border: 2px solid #47b0e0;
   background-color: #47afe00e;
   .avatar {
     padding: 10px;
     width: 60px;
+  }
+  p{
+    width: 160px;
   }
 }
 </style>
