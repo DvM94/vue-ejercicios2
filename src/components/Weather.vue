@@ -16,15 +16,15 @@
   </div>
   <div v-if="municipio" class="meteocard">
     <div class="prevision">
-      <h2>{{ infomuni.datos.stateSky.description }}</h2>
-      <h2>{{ infomuni.datos.stateSky.id }}</h2>
-      <img :src="`/imgweather/${infomuni.datos.stateSky.id}.jpg`" :alt="infomuni.datos.stateSky.description" />
+      <h2>{{ infomuni.prev }}</h2>
+      <h2>{{ infomuni.img }}</h2>
+      <img :src="`/imgweather/${infomuni.img}.png`" :alt="infomuni.prev" />
     </div>
     <div class="datos">
-      <p>Temperatura actual :{{ infomuni.datos.temperatura_actual }}ºC</p>
+      <p>Temperatura actual :{{ infomuni.temp }}ºC</p>
       <ul>
-        <li>Máxima:{{ infomuni.datos.temperaturas.max }}ºC</li>
-        <li>Mínima:{{ infomuni.datos.temperaturas.min }}ºC</li>
+        <li>Máxima:{{ infomuni.tempmax }}ºC</li>
+        <li>Mínima:{{ infomuni.tempmin }}ºC</li>
       </ul>
     </div>
   </div>
@@ -66,7 +66,11 @@ export default {
       fetch(`https://www.el-tiempo.net/api/json/v2/provincias/${provincia.value}/municipios/${municipio.value}`)
         .then((res) => res.json())
         .then((data) => {
-          infomuni.datos = data
+          infomuni.img = data.stateSky.id
+          infomuni.prev = data.stateSky.description
+          infomuni.temp = data.temperatura_actual
+          infomuni.tempmax = data.temperaturas.max
+          infomuni.tempmin = data.temperaturas.min
         });
     };
 
