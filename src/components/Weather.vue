@@ -13,11 +13,17 @@
         {{ muni.NOMBRE }}
       </option>
     </select>
+    Filtro:
+    <div class="municipios">
+      <input type="text" v-model="busqueda" @keyup="cargarMunicipiosFiltro()">
+      <ul>
+        <li v-for="(muni, i) in municipiosFiltrados" :key="i" @click="elegirMunicipio(muni.COD_GEO)">{{ muni.NOMBRE }}</li>
+      </ul>
+    </div>
   </div>
   <div v-if="municipio" class="meteocard">
     <div class="prevision">
       <h2>{{ infomuni.prev }}</h2>
-      <h2>{{ infomuni.img }}</h2>
       <img :src="`/imgweather/${infomuni.img}.png`" :alt="infomuni.prev" />
     </div>
     <div class="datos">
@@ -37,30 +43,41 @@ export default {
   name: "Weather",
   props: {},
   setup() {
-    let provincia = ref("");
-    let provincias = reactive([]);
-    let municipio = ref("");
-    let municipios = reactive([]);
-    let infomuni = reactive({});
+    let provincia = ref("")
+    let provincias = reactive([])
+    let municipio = ref("")
+    let municipios = reactive([])
+    let municipiosFiltrados = reactive([])
+    let infomuni = reactive({})
+    let busqueda = ref("")
 
     fetch("https://raw.githubusercontent.com/IagoLast/pselect/master/data/provincias.json")
       .then((res) => res.json())
       .then((data) => {
-        data.forEach((element) => {
-          provincias.push(element);
-        });
-      });
+          provincias.push(...data)
+      })
 
     const cargarMunicipios = () => {
       fetch(`https://www.el-tiempo.net/api/json/v2/provincias/${provincia.value}/municipios`)
         .then((res) => res.json())
         .then((data) => {
           municipios.splice(0)
-          data.municipios.forEach((element) => {
-            municipios.push(element);
-          });
-        });
-    };
+          municipios.push(...data.municipios)
+        })
+    }
+
+    const cargarMunicipiosFiltro = () => {
+      municipiosFiltrados.splice(0)
+      let filtro = municipios.filter(muni=>{
+        return RegExp(busqueda.value,"i").test(muni.NOMBRE)
+        })
+      municipiosFiltrados.push(...filtro)
+    }
+
+    const elegirMunicipio = (muni) => {
+      municipio.value = muni
+      cargarInfo()
+    }
 
     const cargarInfo = () => {
       fetch(`https://www.el-tiempo.net/api/json/v2/provincias/${provincia.value}/municipios/${municipio.value}`)
@@ -79,9 +96,13 @@ export default {
       provincias,
       municipio,
       municipios,
+      municipiosFiltrados,
       cargarMunicipios,
+      cargarMunicipiosFiltro,
+      elegirMunicipio,
       cargarInfo,
       infomuni,
+      busqueda
     };
   },
 };
@@ -90,10 +111,35 @@ export default {
 <style lang="scss" scoped>
 .seleccion {
   padding-bottom: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
   select {
-    width: 120px;
+    width: 100px;
     border: none;
     border-bottom: 2px solid black;
+  }
+  .municipios{
+    input{
+      width: 120px;
+    }
+    ul{
+      border: 1px solid black;
+      width: 130px;
+      height: 100px;
+      padding: 0;
+      margin-top: 5px;
+      list-style:none;
+      overflow: auto;
+      li{
+        text-align: left;
+        font-size: .8rem;
+        cursor: pointer;
+        &:hover{
+          background-color: #ddd;
+        }
+      }
+    }
   }
 }
 .meteocard {
@@ -102,7 +148,7 @@ export default {
   background-color: #47afe00e;
   .prevision {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     img {
       width: 150px;
