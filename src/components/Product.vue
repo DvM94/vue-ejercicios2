@@ -1,29 +1,38 @@
 <template>
   <div class="card">
-    <p>{{pName}}</p>
-    <p>{{pDescription}}</p>
-    <p>
-      {{pPrice}}€ x 
-      <input type="number" v-model="units"> = 
-      {{total}}€
-    </p>
+    <Gallery class="photo" :images="pImages"/>
+    <div class="info">
+      <p>{{pName}}</p>
+      <p>{{pDescription}}</p>
+      <p>
+        {{pPrice}}€ x 
+        <input type="number" v-model="units"> = 
+        {{total}}€
+      </p>
+    </div>
   </div>
 </template>
 
 <script>
-import { computed, context, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
+import Gallery from "@/components/Gallery.vue"
 
 export default {
   name:"Product",
+  components:{
+    Gallery
+  },
   props:{
     pName: String,
     pDescription: String,
-    pPrice: {default:0},
-    units: {default:1},
+    pPrice: String,
+    pImages: Array
   },
   setup(props,context){
-    const total = computed(()=>{
-      return Number(props.pPrice*props.units).toFixed(2)
+
+    let units = ref(1)
+    let total = computed(()=>{
+      return (props.pPrice*units.value).toFixed(2)
     })
     
     watch(total,(current, prev)=>{
@@ -31,7 +40,8 @@ export default {
     })
 
     return{
-      total
+      units,
+      total,
     }
   }
 }
@@ -39,15 +49,22 @@ export default {
 
 <style lang="scss" scoped>
 .card{
-  display: block;
-  p{
-    margin: 10px auto;
-    width: 80%;
-    input{
-      width: 35px;
-    }
-    &:first-of-type {
-      font-weight: 600;
+  width: 450px;
+  height: 150px;
+  .photo{
+    width: 45%;
+  }
+  .info{
+    width: 55%;
+    p{
+      margin: 10px auto;
+      width: 80%;
+      input{
+        width: 35px;
+      }
+      &:first-of-type {
+        font-weight: 600;
+      }
     }
   }
 }
