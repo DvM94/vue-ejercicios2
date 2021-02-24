@@ -16,8 +16,8 @@ export default {
   props:{},
   setup(){
     const articulos=[
-      {nombre:'Cerillas',descripcion:'Cerillas bonitas',precio:'2.20',imagenes:["/products/cerillas1.jpg","/products/cerillas2.jpg","/products/cerillas3.jpg"]},
-      {nombre:'Zapatos',descripcion:'Zapatos feos',precio:'12.90',imagenes:["/products/zapatos1.jpg","/products/zapatos2.jpg","/products/zapatos3.jpg"]},
+      {nombre:'Cerillas',descripcion:'Cerillas fuertes',precio:'2.20',imagenes:["/products/cerillas1.jpg","/products/cerillas2.jpg","/products/cerillas3.jpg"]},
+      {nombre:'Zapatos',descripcion:'Zapatos bonitos',precio:'12.90',imagenes:["/products/zapatos1.jpg","/products/zapatos2.jpg","/products/zapatos3.jpg"]},
       {nombre:'Martillo',descripcion:'Herramienta',precio:'8.50',imagenes:["/products/martillo1.jpg","/products/martillo2.jpg"]}
     ]
 
