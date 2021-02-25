@@ -6,7 +6,7 @@ const schemaUser = new Schema({
     type: String,
     required: [true, "El nombre no puede ir vacío"],
     validate: {
-      validator: function (name) { return /^[a-zÀ-ÿ\u00f1\u00d1\s]{2,}$/i.test(name) },
+      validator: function (name) { return /^[a-zÀ-ÿ\u00f1\u00d1\s]{3,}$/i.test(name) },
       message: "El nombre no es válido"
     }
   },
@@ -14,7 +14,7 @@ const schemaUser = new Schema({
     type: String,
     required: [true, "El apellido no puede ir vacío"],
     validate: {
-      validator: function (surname) { return /^[a-zÀ-ÿ\u00f1\u00d1\s]{2,}$/i.test(surname) },
+      validator: function (surname) { return /^[a-zÀ-ÿ\u00f1\u00d1\s]{3,}$/i.test(surname) },
       message: "El apellido no es válido"
     }
   }

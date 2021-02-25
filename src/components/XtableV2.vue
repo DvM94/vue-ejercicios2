@@ -77,7 +77,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .table {
   margin: 20px auto;
   border: 1px solid #ddd;

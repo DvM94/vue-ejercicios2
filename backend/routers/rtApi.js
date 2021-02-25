@@ -9,9 +9,8 @@ rtApi.get("/welcome",(req,res)=>{
 })
 
 rtApi.post("/nuevo",(req,res)=>{
-  daoUser.save(req.body)
+  daoUser.saveUser(req.body)
     .then(()=>{
-      console.log("guardado en bd",req.body)
       res.json({
         respuesta:"Datos recibidos",
         datos: req.body
@@ -25,6 +24,20 @@ rtApi.post("/nuevo",(req,res)=>{
         respuesta:"Datos NO recibidos",
         errors: errors
       })
+    })
+})
+
+rtApi.get("/lista",(req,res)=>{
+  daoUser.showUsers()
+    .then(datos=>{
+      res.json(datos)
+    })
+})
+
+rtApi.post("/eliminar",(req,res)=>{
+  daoUser.deleteUser(req.body.id)
+    .then(datos=>{
+      res.json(datos)
     })
 })
 

@@ -34,6 +34,7 @@ button {
   color: white;
   font-weight: bold;
   box-shadow: 2px 2px 4px #888;
+  cursor: pointer;
 }
 .button-warning{
   background-color: red;
