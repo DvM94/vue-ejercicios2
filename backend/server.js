@@ -3,11 +3,13 @@ const app = express()
 const port = process.env.PORT || 3000
 //enrutadores
 const rtApi = require("./routers/rtApi")
+const rtLang = require("./routers/rtLang")
 //base de datos MongoDB
 const connection = require("./connection")
 
 //middlewares
 app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 //conexión a mongo db
 connection.on("error",console.error.bind(console,"Error al conectar a mongo"))
@@ -15,6 +17,7 @@ connection.once("open",()=>console.log("Conexión con Mongo OK!"))
 
 //enroutadores
 app.use("/api",rtApi)
+app.use("/lang",rtLang)
 
 //arrancar el servidor
 app.listen(port,(err)=>{
