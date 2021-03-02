@@ -31,14 +31,17 @@
 </template>
 
 <script>
-import { reactive, computed } from "vue";
+import { reactive, computed } from "vue"
+import { useStore } from "vuex"
 import Xinput from "@/components/Xinput.vue"
-import Xtable from './Xtable.vue';
+import Xtable from './Xtable.vue'
 export default {
   components: { Xtable, Xinput },
   name: "XtableV2",
   props: {},
   setup() {
+    const store = useStore()
+
     const datos = reactive([
       { concepto: "Pantalones vaqueros chico", cantidad: 2, precio: 30.99 },
       { concepto: "Camiseta básica chico", cantidad: 4, precio: 6.99 },
@@ -50,6 +53,7 @@ export default {
       let total=0
       datos.forEach(dato=>total+=dato.cantidad*dato.precio)
       total=Math.round(total*100)/100
+      store.commit("setTotal",total)
       return total
     })
 

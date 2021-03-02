@@ -13,8 +13,19 @@
     <router-link to="/ejercicio10">Ejercicio 10</router-link> |
     <router-link to="/storage">Storage</router-link>
   </div>
+  <Userdata />
   <router-view/>
 </template>
+
+<script>
+import Userdata from "@/components/Userdata.vue";
+
+export default {
+  components:{
+    Userdata
+  },
+}
+</script>
 
 <style lang="scss">
 #app {

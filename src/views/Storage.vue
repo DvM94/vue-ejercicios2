@@ -1,7 +1,6 @@
 <template>
   <div class="ejercicio">
     <Store />
-    <Store />
   </div>
 </template>
 
