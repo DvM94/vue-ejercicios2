@@ -13,16 +13,16 @@
     <router-link to="/ejercicio10">Ejercicio 10</router-link> |
     <router-link to="/storage">Storage</router-link>
   </div>
-  <Userdata />
+  <LoginBox2 />
   <router-view/>
 </template>
 
 <script>
-import Userdata from "@/components/Userdata.vue";
+import LoginBox2 from "@/components/LoginBox2.vue"
 
 export default {
   components:{
-    Userdata
+    LoginBox2
   },
 }
 </script>
@@ -36,7 +36,7 @@ export default {
   color: #2c3e50;
 }
 #nav {
-  padding: 30px;
+  padding: 30px 30px 5px 30px;
 
   a {
     text-decoration: none;

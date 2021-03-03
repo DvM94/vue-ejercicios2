@@ -1,3 +1,4 @@
+const { resolveDirective } = require("vue")
 const User = require("../models/User")
 
 const daoUser = {}
@@ -12,7 +13,7 @@ daoUser.saveUser = function saveUser(user) {
   })
 }
 
-//Consultar
+//Listar
 
 daoUser.showUsers = function showUsers() {
   return new Promise((resolve, reject) => {
@@ -25,6 +26,25 @@ daoUser.showUsers = function showUsers() {
 daoUser.deleteUser = function deleteUser(id) {
   return new Promise((resolve, reject) => {
     resolve(User.findByIdAndDelete(id))
+  })
+}
+
+//Logear
+
+daoUser.login = function login(email,password){
+  return new Promise((resolved,reject)=>{
+    User.findOne({email:email})
+      .then(member=>{
+        if(member){
+          if(member.password==password)
+            resolved(member)
+          else
+            resolved(null)
+        }
+        else{
+          resolved(null)
+        }
+      })
   })
 }
 

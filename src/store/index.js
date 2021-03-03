@@ -23,7 +23,7 @@ export default createStore({
       fetch("http://localhost:3000/api/lista")
       .then(resp=>resp.json())
       .then(datos=>{
-        mutations.commit("setUser",datos[1])
+        mutations.commit("setUser",datos[Math.round(Math.random()*(datos.length-1))])
       })
     }
   },

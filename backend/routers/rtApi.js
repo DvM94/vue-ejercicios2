@@ -20,6 +20,9 @@ rtApi.post("/nuevo",(req,res)=>{
       let errors = {}
       if(error.errors.name) errors.name = error.errors.name.message
       if(error.errors.surname) errors.surname = error.errors.surname.message
+      if(error.errors.phone) errors.phone = error.errors.phone.message
+      if(error.errors.email) errors.email = error.errors.email.message
+      if(error.errors.password) errors.password = error.errors.password.message
       res.json({
         respuesta:"Datos NO recibidos",
         errors: errors
@@ -39,6 +42,11 @@ rtApi.post("/eliminar",(req,res)=>{
     .then(datos=>{
       res.json(datos)
     })
+})
+
+rtApi.post("/login",(req,res)=>{
+  daoUser.login(req.body.email,req.body.password)
+    .then(datos=>res.json(datos))
 })
 
 module.exports=rtApi
