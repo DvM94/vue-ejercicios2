@@ -8,6 +8,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^4.0.0",
     "i18next": "^19.9.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",

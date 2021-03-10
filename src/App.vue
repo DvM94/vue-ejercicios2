@@ -11,7 +11,8 @@
     <router-link to="/ejercicio8">Ejercicio 8</router-link> |
     <router-link to="/ejercicio9">Ejercicio 9</router-link> |
     <router-link to="/ejercicio10">Ejercicio 10</router-link> |
-    <router-link to="/storage">Storage</router-link>
+    <router-link to="/storage">Storage</router-link> |
+    <router-link to="/tinymce">TinyMCE</router-link>
   </div>
   <LoginBox2 />
   <router-view/>

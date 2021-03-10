@@ -11,6 +11,7 @@ import Ejercicio8 from '../views/Ejercicio8.vue'
 import Ejercicio9 from '../views/Ejercicio9.vue'
 import Ejercicio10 from '../views/Ejercicio10.vue'
 import Storage from '../views/Storage.vue'
+import TinyMCE from '../views/TinyMCE.vue'
 
 const routes = [
   {
@@ -72,6 +73,11 @@ const routes = [
     path: '/storage',
     name: 'Storage',
     component: Storage
+  },
+  {
+    path: '/tinymce',
+    name: 'TinyMCE',
+    component: TinyMCE
   }
 ]
 
